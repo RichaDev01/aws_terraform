@@ -20,9 +20,12 @@ resource "aws_s3_bucket" "test" {
 }
 
 resource "aws_s3_bucket" "demo_bucket" {
+    # using count
 
     # count = length((var.bucket_list))
     # bucket = var.bucket_list[count.index]
+
+    # using for each
 
     for_each = toset(var.bucket_list)
     bucket = each.key
