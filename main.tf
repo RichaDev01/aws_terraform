@@ -10,8 +10,7 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
-  access_key = "AKIA4MTWNGI74CHJ5DDX"
-  secret_key = "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"
+
 }
 
 # LOOPS FOR CREATING INSTANCES
