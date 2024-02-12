@@ -14,20 +14,23 @@ provider "aws" {
   secret_key = "RcPD4s8BYlTUvZN1Fc3xCg8FUzH/p81xToULYYt8"
 }
 
-
-resource "aws_s3_bucket" "test" {
-  bucket = "myfirstbuckettss12"
-}
-
+# LOOPS FOR CREATING INSTANCES
+# FOR EACH LOOP
 resource "aws_s3_bucket" "demo_bucket" {
-    # using count
+    # for_each = toset(var.bucket_list)
+    # bucket = each.key
 
-    # count = length((var.bucket_list))
-    # bucket = var.bucket_list[count.index]
-
-    # using for each
-
-    for_each = toset(var.bucket_list)
+    for_each = var.bucket_map
     bucket = each.key
+  
+}
+# USING COUNT
+resource "aws_s3_bucket" "countt11_bucket" {
+
+    count = length((var.bucket_list))
+    bucket = var.bucket_list[count.index]
+
+    # count = 2
+    # bucket = "inst-${count.index}"
   
 }
